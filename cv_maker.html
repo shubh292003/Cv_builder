@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium ATS CV Maker</title>
+    <link rel="stylesheet" href="cv_maker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo"><i class="fas fa-file-contract"></i><h1>ProCV<span>Maker</span></h1></div>
+            <div class="header-actions">
+                <span class="ats-badge"><i class="fas fa-check-circle"></i> ATS Optimized</span>
+                <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-download"></i> Download PDF</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="editor-panel glass-panel">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="templates"><i class="fas fa-layer-group"></i> Theme</button>
+                    <button class="tab-btn" data-tab="personal"><i class="fas fa-user"></i> Personal</button>
+                    <button class="tab-btn" data-tab="experience"><i class="fas fa-briefcase"></i> Experience</button>
+                    <button class="tab-btn" data-tab="education"><i class="fas fa-graduation-cap"></i> Education</button>
+                    <button class="tab-btn" data-tab="skills"><i class="fas fa-star"></i> Skills</button>
+                </div>
+
+                <div class="form-container">
+                    <form id="templates-form" class="tab-content active">
+                        <div class="form-header">
+                            <h2>Choose Template</h2>
+                            <p>All templates are single-column for max ATS score.</p>
+                        </div>
+                        <div class="template-selector">
+                            <label class="template-option">
+                                <input type="radio" name="template" value="classic" checked>
+                                <div class="template-card"><i class="fas fa-university"></i><h4>Classic</h4></div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="modern">
+                                <div class="template-card"><i class="fas fa-bolt"></i><h4>Modern</h4></div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="minimal">
+                                <div class="template-card"><i class="fas fa-minus"></i><h4>Minimal</h4></div>
+                            </label>
+                        </div>
+                    </form>
+
+                    <form id="personal-form" class="tab-content">
+                        <div class="form-header"><h2>Personal Info</h2></div>
+                        <div class="input-group"><label>Full Name</label><input type="text" id="fullName" placeholder="e.g. John Doe"></div>
+                        <div class="input-group"><label>Job Title</label><input type="text" id="jobTitle" placeholder="e.g. Developer"></div>
+                        <div class="input-row">
+                            <div class="input-group"><label>Email</label><input type="email" id="email" placeholder="email@ext.com"></div>
+                            <div class="input-group"><label>Phone</label><input type="tel" id="phone" placeholder="1234567890"></div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group"><label>Location</label><input type="text" id="address" placeholder="City, NY"></div>
+                            <div class="input-group"><label>LinkedIn</label><input type="text" id="linkedin" placeholder="linkedin.com/in/"></div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Professional Summary</label>
+                            <textarea id="summary" rows="4" placeholder="Briefly describe your background..."></textarea>
+                        </div>
+                    </form>
+
+                    <form id="experience-form" class="tab-content">
+                        <div class="form-header"><h2>Work Experience</h2></div>
+                        <div id="experience-list">
+                            <div class="experience-item">
+                                <button type="button" class="remove-item"><i class="fas fa-times"></i></button>
+                                <div class="input-row">
+                                    <div class="input-group"><label>Company</label><input type="text" class="exp-company"></div>
+                                    <div class="input-group"><label>Job Title</label><input type="text" class="exp-title"></div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group"><label>Start Date</label><input type="text" class="exp-start"></div>
+                                    <div class="input-group"><label>End Date</label><input type="text" class="exp-end"></div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Achievements (New line for new bullet)</label>
+                                    <textarea class="exp-desc" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="add-experience"><i class="fas fa-plus"></i> Add Experience</button>
+                    </form>
+
+                    <form id="education-form" class="tab-content">
+                        <div class="form-header"><h2>Education</h2></div>
+                        <div id="education-list">
+                            <div class="education-item">
+                                <button type="button" class="remove-item"><i class="fas fa-times"></i></button>
+                                <div class="input-group"><label>Institution</label><input type="text" class="edu-school"></div>
+                                <div class="input-row">
+                                    <div class="input-group"><label>Degree</label><input type="text" class="edu-degree"></div>
+                                    <div class="input-group"><label>Year</label><input type="text" class="edu-end"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="add-education"><i class="fas fa-plus"></i> Add Education</button>
+                    </form>
+
+                    <form id="skills-form" class="tab-content">
+                        <div class="form-header"><h2>Skills</h2></div>
+                        <div class="input-group">
+                            <label>Core Skills (comma-separated)</label>
+                            <textarea id="skillsInput" rows="4"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="preview-panel">
+                <div class="cv-document template-classic glassmorphism" id="cv-preview">
+                    <header class="cv-header-ats">
+                        <h1 id="preview-name">John Doe</h1>
+                        <h3 id="preview-title" style="display: none;">Developer</h3>
+                        <div class="cv-contact-ats">
+                            <span id="preview-email">john@example.com</span><span class="separator">•</span>
+                            <span id="preview-phone">+1 234 567 8900</span><span class="separator">•</span>
+                            <span id="preview-address">New York, NY</span>
+                            <span class="separator" id="linkedin-separator" style="display:none;">•</span>
+                            <span id="preview-linkedin" style="display:none;"></span>
+                        </div>
+                    </header>
+
+                    <div class="cv-body-ats">
+                        <section class="cv-section-ats">
+                            <h2 class="section-title-ats">PROFESSIONAL SUMMARY</h2>
+                            <p id="preview-summary">Results-oriented professional with a strong track record of success. Skilled in modern web technologies and agile development methodologies.</p>
+                        </section>
+
+                        <section class="cv-section-ats">
+                            <h2 class="section-title-ats">WORK EXPERIENCE</h2>
+                            <div id="preview-experience-list">
+                                <div class="cv-item-ats">
+                                    <div class="cv-item-header-ats">
+                                        <div class="cv-item-title-ats"><strong>Software Engineer</strong>, <em>Google</em></div>
+                                        <div class="cv-item-date-ats">Jan 2020 - Present</div>
+                                    </div>
+                                    <ul class="cv-item-desc-ats"><li>Developed robust and scalable frontend architectures.</li><li>Led a team of 4 developers.</li></ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="cv-section-ats">
+                            <h2 class="section-title-ats">EDUCATION</h2>
+                            <div id="preview-education-list">
+                                <div class="cv-item-ats">
+                                    <div class="cv-item-header-ats">
+                                        <div class="cv-item-title-ats"><strong>BS in CS</strong>, <em>MIT</em></div>
+                                        <div class="cv-item-date-ats">2020</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="cv-section-ats">
+                            <h2 class="section-title-ats">SKILLS</h2>
+                            <p class="cv-skills-ats" id="preview-skills">JavaScript, React, Node.js</p>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="cv_maker.js"></script>
+</body>
+</html>
