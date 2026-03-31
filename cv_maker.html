@@ -4,35 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium ATS CV Maker</title>
+    
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="cv_maker.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="app-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+    <!-- Background Animated Orbs -->
+    <div class="app-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
     
     <div class="app-container">
+        
+        <!-- ==================== HEADER ==================== -->
         <header class="app-header">
-            <div class="logo"><i class="fas fa-file-contract"></i><h1>ProCV<span>Maker</span></h1></div>
+            <div class="logo">
+                <i class="fas fa-file-contract"></i>
+                <h1>ProCV<span>Maker</span></h1>
+            </div>
             <div class="header-actions">
-                <span class="ats-badge"><i class="fas fa-check-circle"></i> ATS Optimized</span>
-                <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-download"></i> Download PDF</button>
+                <span class="ats-badge">
+                    <i class="fas fa-check-circle"></i> ATS Optimized
+                </span>
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
             </div>
         </header>
 
+        <!-- ==================== MAIN CONTENT ==================== -->
         <main class="main-content">
+            
+            <!-- --- EDITOR PANEL --- -->
             <section class="editor-panel glass-panel">
+                
+                <!-- Navigation Tabs -->
                 <div class="tabs">
-                    <button class="tab-btn active" data-tab="templates"><i class="fas fa-layer-group"></i> Theme</button>
-                    <button class="tab-btn" data-tab="personal"><i class="fas fa-user"></i> Personal</button>
-                    <button class="tab-btn" data-tab="experience"><i class="fas fa-briefcase"></i> Experience</button>
-                    <button class="tab-btn" data-tab="education"><i class="fas fa-graduation-cap"></i> Education</button>
-                    <button class="tab-btn" data-tab="skills"><i class="fas fa-star"></i> Skills</button>
+                    <button class="tab-btn active" data-tab="templates">
+                        <i class="fas fa-layer-group"></i> Theme
+                    </button>
+                    <button class="tab-btn" data-tab="personal">
+                        <i class="fas fa-user"></i> Personal
+                    </button>
+                    <button class="tab-btn" data-tab="experience">
+                        <i class="fas fa-briefcase"></i> Experience
+                    </button>
+                    <button class="tab-btn" data-tab="education">
+                        <i class="fas fa-graduation-cap"></i> Education
+                    </button>
+                    <button class="tab-btn" data-tab="skills">
+                        <i class="fas fa-star"></i> Skills
+                    </button>
+                    <button class="tab-btn" data-tab="projects">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </button>
+                    <button class="tab-btn" data-tab="languages">
+                        <i class="fas fa-language"></i> Languages
+                    </button>
                 </div>
 
+                <!-- Form Container -->
                 <div class="form-container">
+                    
+                    <!-- 1. Templates Tab -->
                     <form id="templates-form" class="tab-content active">
                         <div class="form-header">
                             <h2>Choose Template</h2>
@@ -41,50 +85,108 @@
                         <div class="template-selector">
                             <label class="template-option">
                                 <input type="radio" name="template" value="classic" checked>
-                                <div class="template-card"><i class="fas fa-university"></i><h4>Classic</h4></div>
+                                <div class="template-card">
+                                    <i class="fas fa-university"></i>
+                                    <h4>Classic</h4>
+                                </div>
                             </label>
                             <label class="template-option">
                                 <input type="radio" name="template" value="modern">
-                                <div class="template-card"><i class="fas fa-bolt"></i><h4>Modern</h4></div>
+                                <div class="template-card">
+                                    <i class="fas fa-bolt"></i>
+                                    <h4>Modern</h4>
+                                </div>
                             </label>
                             <label class="template-option">
                                 <input type="radio" name="template" value="minimal">
-                                <div class="template-card"><i class="fas fa-minus"></i><h4>Minimal</h4></div>
+                                <div class="template-card">
+                                    <i class="fas fa-minus"></i>
+                                    <h4>Minimal</h4>
+                                </div>
                             </label>
                         </div>
                     </form>
 
+                    <!-- 2. Personal Info Tab -->
                     <form id="personal-form" class="tab-content">
-                        <div class="form-header"><h2>Personal Info</h2></div>
-                        <div class="input-group"><label>Full Name</label><input type="text" id="fullName" placeholder="e.g. John Doe"></div>
-                        <div class="input-group"><label>Job Title</label><input type="text" id="jobTitle" placeholder="e.g. Developer"></div>
-                        <div class="input-row">
-                            <div class="input-group"><label>Email</label><input type="email" id="email" placeholder="email@ext.com"></div>
-                            <div class="input-group"><label>Phone</label><input type="tel" id="phone" placeholder="1234567890"></div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group"><label>Location</label><input type="text" id="address" placeholder="City, NY"></div>
-                            <div class="input-group"><label>LinkedIn</label><input type="text" id="linkedin" placeholder="linkedin.com/in/"></div>
+                        <div class="form-header">
+                            <h2>Personal Info</h2>
                         </div>
                         
                         <div class="input-group">
-                            <label>Professional Summary</label>
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" placeholder="e.g. rahul">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Job Title</label>
+                            <input type="text" id="jobTitle" placeholder="e.g. Developer">
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type="email" id="email" placeholder="email@gmail.com">
+                            </div>
+                            <div class="input-group">
+                                <label>Phone</label>
+                                <input type="tel" id="phone" placeholder="+91 9999999999">
+                            </div>
+                        </div>
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Location</label>
+                                <input type="text" id="address" placeholder="City, state">
+                            </div>
+                            <div class="input-group">
+                                <label>LinkedIn</label>
+                                <input type="text" id="linkedin" placeholder="linkedin.com/in/">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Professional Summary &amp; Pre-written Templates</label>
+                            <div class="quick-tags" id="summary-tags" style="margin-bottom: 0.8rem;">
+                                <span class="tag-badge" onclick="setSummary('Software Engineer')">Software Engineer</span>
+                                <span class="tag-badge" onclick="setSummary('Web Developer')">Web Developer</span>
+                                <span class="tag-badge" onclick="setSummary('Web Designer')">Web Designer</span>
+                                <span class="tag-badge" onclick="setSummary('Marketing')">Marketing</span>
+                                <span class="tag-badge" onclick="setSummary('Design')">Designer</span>
+                                <span class="tag-badge" onclick="setSummary('Project Management')">Project Manager</span>
+                                <span class="tag-badge" onclick="setSummary('Data Analysis')">Data Analyst</span>
+                            </div>
                             <textarea id="summary" rows="4" placeholder="Briefly describe your background..."></textarea>
                         </div>
                     </form>
 
+                    <!-- 3. Work Experience Tab -->
                     <form id="experience-form" class="tab-content">
-                        <div class="form-header"><h2>Work Experience</h2></div>
+                        <div class="form-header">
+                            <h2>Work Experience</h2>
+                        </div>
                         <div id="experience-list">
                             <div class="experience-item">
                                 <button type="button" class="remove-item"><i class="fas fa-times"></i></button>
                                 <div class="input-row">
-                                    <div class="input-group"><label>Company</label><input type="text" class="exp-company"></div>
-                                    <div class="input-group"><label>Job Title</label><input type="text" class="exp-title"></div>
+                                    <div class="input-group">
+                                        <label>Company</label>
+                                        <input type="text" class="exp-company">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Job Title</label>
+                                        <input type="text" class="exp-title">
+                                    </div>
                                 </div>
                                 <div class="input-row">
-                                    <div class="input-group"><label>Start Date</label><input type="text" class="exp-start"></div>
-                                    <div class="input-group"><label>End Date</label><input type="text" class="exp-end"></div>
+                                    <div class="input-group">
+                                        <label>Start Date</label>
+                                        <input type="text" class="exp-start">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>End Date</label>
+                                        <input type="text" class="exp-end">
+                                    </div>
                                 </div>
                                 <div class="input-group">
                                     <label>Achievements (New line for new bullet)</label>
@@ -92,88 +194,234 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-secondary" id="add-experience"><i class="fas fa-plus"></i> Add Experience</button>
+                        <button type="button" class="btn btn-secondary" id="add-experience">
+                            <i class="fas fa-plus"></i> Add Experience
+                        </button>
+
+                        <div class="form-header" style="margin-top: 2rem;">
+                            <h2>Fresher Details (Internships/Roles)</h2>
+                            <p>For freshers without formal work experience.</p>
+                        </div>
+                        <div id="fresher-list">
+                            <!-- Items dynamically added here -->
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="add-fresher">
+                            <i class="fas fa-plus"></i> Add Fresher Role
+                        </button>
                     </form>
 
+                    <!-- 4. Education Tab -->
                     <form id="education-form" class="tab-content">
-                        <div class="form-header"><h2>Education</h2></div>
+                        <div class="form-header">
+                            <h2>Education</h2>
+                        </div>
                         <div id="education-list">
                             <div class="education-item">
                                 <button type="button" class="remove-item"><i class="fas fa-times"></i></button>
-                                <div class="input-group"><label>Institution</label><input type="text" class="edu-school"></div>
+                                <div class="input-group">
+                                    <label>Institution</label>
+                                    <input type="text" class="edu-school">
+                                </div>
                                 <div class="input-row">
-                                    <div class="input-group"><label>Degree</label><input type="text" class="edu-degree"></div>
-                                    <div class="input-group"><label>Year</label><input type="text" class="edu-end"></div>
+                                    <div class="input-group">
+                                        <label>Degree</label>
+                                        <input type="text" class="edu-degree">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Year</label>
+                                        <input type="text" class="edu-end">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-secondary" id="add-education"><i class="fas fa-plus"></i> Add Education</button>
+                        <button type="button" class="btn btn-secondary" id="add-education">
+                            <i class="fas fa-plus"></i> Add Education
+                        </button>
                     </form>
 
+                    <!-- 5. Skills Tab -->
                     <form id="skills-form" class="tab-content">
-                        <div class="form-header"><h2>Skills</h2></div>
+                        <div class="form-header">
+                            <h2>Skills</h2>
+                        </div>
                         <div class="input-group">
                             <label>Core Skills (comma-separated)</label>
                             <textarea id="skillsInput" rows="4"></textarea>
                         </div>
                     </form>
+                    <!-- 6. Projects Tab -->
+                    <form id="projects-form" class="tab-content">
+                        <div class="form-header">
+                            <h2>Projects</h2>
+                        </div>
+                        <div id="projects-list">
+                            <div class="projects-item">
+                                <button type="button" class="remove-item"><i class="fas fa-times"></i></button>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>Project Name</label>
+                                        <input type="text" class="proj-name">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Technologies/Role</label>
+                                        <input type="text" class="proj-tech">
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label>Date / Year</label>
+                                        <input type="text" class="proj-date">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Link (optional)</label>
+                                        <input type="text" class="proj-link">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label>Description (New line for new bullet)</label>
+                                    <textarea class="proj-desc" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="add-project">
+                            <i class="fas fa-plus"></i> Add Project
+                        </button>
+                    </form>
+
+                    <!-- 7. Languages Tab -->
+                    <form id="languages-form" class="tab-content">
+                        <div class="form-header">
+                            <h2>Languages</h2>
+                            <p>Select from common languages or type your own.</p>
+                        </div>
+                        <div class="quick-tags" id="language-tags">
+                            <span class="tag-badge" onclick="addLanguage('English')">English</span>
+                            <span class="tag-badge" onclick="addLanguage('Spanish')">Spanish</span>
+                            <span class="tag-badge" onclick="addLanguage('French')">French</span>
+                            <span class="tag-badge" onclick="addLanguage('German')">German</span>
+                            <span class="tag-badge" onclick="addLanguage('Mandarin')">Mandarin</span>
+                            <span class="tag-badge" onclick="addLanguage('Hindi')">Hindi</span>
+                            <span class="tag-badge" onclick="addLanguage('Arabic')">Arabic</span>
+                        </div>
+                        <div class="input-group" style="margin-top: 1rem;">
+                            <label>Languages (comma-separated)</label>
+                            <textarea id="languagesInput" rows="4" placeholder="e.g. English, Spanish"></textarea>
+                        </div>
+                    </form>
+                    
                 </div>
             </section>
 
+            <!-- --- PREVIEW PANEL --- -->
             <section class="preview-panel">
                 <div class="cv-document template-classic glassmorphism" id="cv-preview">
+                    
+                    <!-- Preview Header -->
                     <header class="cv-header-ats">
-                        <h1 id="preview-name">John Doe</h1>
+                        <h1 id="preview-name">shubh </h1>
                         <h3 id="preview-title" style="display: none;">Developer</h3>
+                        
                         <div class="cv-contact-ats">
-                            <span id="preview-email">john@example.com</span><span class="separator">•</span>
-                            <span id="preview-phone">+1 234 567 8900</span><span class="separator">•</span>
-                            <span id="preview-address">New York, NY</span>
+                            <span id="preview-email">example@gmail.com</span>
+                            <span class="separator">•</span>
+                            <span id="preview-phone">+91 #########</span>
+                            <span class="separator">•</span>
+                            <span id="preview-address">New delhi, India</span>
                             <span class="separator" id="linkedin-separator" style="display:none;">•</span>
                             <span id="preview-linkedin" style="display:none;"></span>
                         </div>
                     </header>
 
+                    <!-- Preview Body -->
                     <div class="cv-body-ats">
+                        
+                        <!-- Professional Summary Section -->
                         <section class="cv-section-ats">
                             <h2 class="section-title-ats">PROFESSIONAL SUMMARY</h2>
                             <p id="preview-summary">Results-oriented professional with a strong track record of success. Skilled in modern web technologies and agile development methodologies.</p>
                         </section>
 
-                        <section class="cv-section-ats">
+                        <!-- Work Experience Section -->
+                        <section class="cv-section-ats" id="experience-section">
                             <h2 class="section-title-ats">WORK EXPERIENCE</h2>
                             <div id="preview-experience-list">
                                 <div class="cv-item-ats">
                                     <div class="cv-item-header-ats">
-                                        <div class="cv-item-title-ats"><strong>Software Engineer</strong>, <em>Google</em></div>
+                                        <div class="cv-item-title-ats">
+                                            <strong>Software Engineer</strong>, <em>Google</em>
+                                        </div>
                                         <div class="cv-item-date-ats">Jan 2020 - Present</div>
                                     </div>
-                                    <ul class="cv-item-desc-ats"><li>Developed robust and scalable frontend architectures.</li><li>Led a team of 4 developers.</li></ul>
+                                    <ul class="cv-item-desc-ats">
+                                        <li>Developed robust and scalable frontend architectures.</li>
+                                        <li>Led a team of 4 developers.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </section>
 
+                        <!-- Fresher Experience Section -->
+                        <section class="cv-section-ats" id="fresher-section" style="display: none;">
+                            <h2 class="section-title-ats">INTERNSHIPS &amp; FRESHER EXPERIENCE</h2>
+                            <div id="preview-fresher-list">
+                                <!-- Fresher items will display here -->
+                            </div>
+                        </section>
+
+                        <!-- Education Section -->
                         <section class="cv-section-ats">
                             <h2 class="section-title-ats">EDUCATION</h2>
                             <div id="preview-education-list">
                                 <div class="cv-item-ats">
                                     <div class="cv-item-header-ats">
-                                        <div class="cv-item-title-ats"><strong>BS in CS</strong>, <em>MIT</em></div>
+                                        <div class="cv-item-title-ats">
+                                            <strong>BS in CS</strong>, <em>IIT</em>
+                                        </div>
                                         <div class="cv-item-date-ats">2020</div>
                                     </div>
                                 </div>
                             </div>
                         </section>
 
+                        <!-- Skills Section -->
                         <section class="cv-section-ats">
                             <h2 class="section-title-ats">SKILLS</h2>
                             <p class="cv-skills-ats" id="preview-skills">JavaScript, React, Node.js</p>
                         </section>
+
+                        <!-- Projects Section -->
+                        <section class="cv-section-ats">
+                            <h2 class="section-title-ats">PROJECTS</h2>
+                            <div id="preview-projects-list">
+                                <div class="cv-item-ats">
+                                    <div class="cv-item-header-ats">
+                                        <div class="cv-item-title-ats">
+                                            <strong>Portfolio Website</strong>, <em>HTML, CSS, JS</em>
+                                        </div>
+                                        <div class="cv-item-date-ats">2023</div>
+                                    </div>
+                                    <ul class="cv-item-desc-ats">
+                                        <li>Designed and developed a personal portfolio website.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Languages Section -->
+                        <section class="cv-section-ats">
+                            <h2 class="section-title-ats">LANGUAGES</h2>
+                            <p class="cv-skills-ats" id="preview-languages">English, Hindi</p>
+                        </section>
+                        
                     </div>
                 </div>
             </section>
+            
         </main>
     </div>
+    
+    <!-- Application Logic Scripts -->
     <script src="cv_maker.js"></script>
+    
 </body>
 </html>
