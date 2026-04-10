@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         radio.addEventListener('change', (event) => {
             const selectedTemplate = event.target.value;
             const previewContainer = document.getElementById('cv-preview');
+            
             // Update the CSS classes on the preview container to apply the new template styling
             previewContainer.className = `cv-document template-${selectedTemplate} glassmorphism`;
         });
@@ -220,19 +221,39 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     `;
 
+    const fresherModeToggle = document.getElementById('toggle-fresher');
+    const fresherFormSection = document.getElementById('fresher-form-section');
+
     const toggleExperienceSections = () => {
-        const fresherItemsCount = document.querySelectorAll('.fresher-item').length;
+        const isFresherMode = fresherModeToggle && fresherModeToggle.checked;
         const experienceSection = document.getElementById('experience-section');
         const fresherSection = document.getElementById('fresher-section');
+        const fresherLabel = fresherModeToggle.closest('.switch-container').querySelector('.switch-label');
         
-        if (fresherItemsCount > 0) {
-            if (experienceSection) experienceSection.style.display = 'none';
-            if (fresherSection) fresherSection.style.display = 'block';
+        if (fresherLabel) {
+            fresherLabel.textContent = isFresherMode ? 'Active' : 'Hidden';
+        }
+
+        if (isFresherMode) {
+            if (experienceSection) experienceSection.classList.add('section-hidden');
+            if (fresherSection) fresherSection.classList.remove('section-hidden');
+            if (fresherFormSection) {
+                fresherFormSection.classList.remove('section-disabled');
+                fresherFormSection.style.display = 'block';
+            }
         } else {
-            if (experienceSection) experienceSection.style.display = 'block';
-            if (fresherSection) fresherSection.style.display = 'none';
+            if (experienceSection) experienceSection.classList.remove('section-hidden');
+            if (fresherSection) fresherSection.classList.add('section-hidden');
+            if (fresherFormSection) {
+                fresherFormSection.classList.add('section-disabled');
+                fresherFormSection.style.display = 'none';
+            }
         }
     };
+
+    if (fresherModeToggle) {
+        fresherModeToggle.addEventListener('change', toggleExperienceSections);
+    }
 
     const updateFresherPreview = () => {
         let previewHtml = '';
@@ -339,6 +360,26 @@ document.addEventListener('DOMContentLoaded', () => {
         languagesInput.dispatchEvent(new Event('input'));
     };
 
+    // Global function to add a skill to the skills input field
+    window.addSkill = function(skill) {
+        if (!skillsInput) return;
+        
+        let currentVal = skillsInput.value.trim();
+        if (currentVal.length === 0) {
+            skillsInput.value = skill;
+        } else if (!currentVal.toLowerCase().includes(skill.toLowerCase())) {
+            if (!currentVal.endsWith(',')) {
+                skillsInput.value += ', ';
+            } else {
+                skillsInput.value += ' ';
+            }
+            skillsInput.value += skill;
+        }
+        
+        // Trigger input event to update preview
+        skillsInput.dispatchEvent(new Event('input'));
+    };
+
     // Global function to set a pre-designed professional summary
     window.setSummary = function(profession) {
         const summaryInput = document.getElementById('summary');
@@ -406,5 +447,30 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     setupDynamicList('projects-list', 'add-project', projectItemTemplate, updateProjectPreview);
+    
+    // --- Project Toggle Logic ---
+    const projectToggle = document.getElementById('toggle-projects');
+    const projectPreviewSection = document.getElementById('preview-projects-section');
+    const projectsList = document.getElementById('projects-list');
+    
+    if (projectToggle && projectPreviewSection) {
+        const projectLabel = projectToggle.closest('.switch-container').querySelector('.switch-label');
+        
+        const updateProjectState = () => {
+            const isChecked = projectToggle.checked;
+            if (projectLabel) projectLabel.textContent = isChecked ? 'Visible' : 'Hidden';
+            
+            if (isChecked) {
+                projectPreviewSection.classList.remove('section-hidden');
+                if (projectsList) projectsList.classList.remove('section-disabled');
+            } else {
+                projectPreviewSection.classList.add('section-hidden');
+                if (projectsList) projectsList.classList.add('section-disabled');
+            }
+        };
+
+        projectToggle.addEventListener('change', updateProjectState);
+        updateProjectState();
+    }
 
 });

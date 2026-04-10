@@ -67,6 +67,101 @@ body {
     }
 }
 
+/* Premium Toggle Switch Styling */
+.switch-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.switch-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch-wrapper input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+input:checked + .switch-slider {
+    background-color: var(--primary);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4), inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input:checked + .switch-slider:before {
+    transform: translateX(22px);
+    background-color: white;
+}
+
+input:checked ~ .switch-label {
+    color: var(--primary);
+}
+
+/* Visibility Feedback in Form */
+.section-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(0.2);
+    transition: all 0.4s ease;
+}
+
+/* Smooth Preview Hide/Show */
+.cv-section-ats {
+    transition: opacity 0.4s ease, transform 0.4s ease, margin 0.4s ease, padding 0.4s ease;
+    overflow: hidden;
+}
+
+.section-hidden {
+    opacity: 0 !important;
+    transform: translateY(10px);
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    pointer-events: none;
+}
+
 /* =========================================
    3. Layout Structure
    ========================================= */
@@ -512,6 +607,349 @@ textarea:focus {
     color: #9ca3af;
     text-align: center;
 }
+
+
+/* --- Theme: Professional --- */
+.template-professional {
+    font-family: 'Outfit', sans-serif;
+    padding: 3rem !important;
+}
+
+.template-professional .cv-header-ats {
+    border-bottom: 3px solid #1e293b;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.template-professional .cv-header-ats h1 {
+    font-size: 28pt;
+    color: #1e293b;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+}
+
+.template-professional .cv-header-ats h3 {
+    color: #475569;
+    font-size: 14pt;
+    margin-top: 0.5rem;
+}
+
+.template-professional .cv-contact-ats {
+    text-align: right;
+    font-size: 10pt;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.template-professional .cv-contact-ats .separator {
+    display: none;
+}
+
+.template-professional .section-title-ats {
+    background: #1e293b;
+    color: white;
+    padding: 0.4rem 1rem;
+    font-size: 12pt;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.template-professional .cv-item-title-ats strong {
+    color: #1e293b;
+}
+
+/* --- Theme: Elegant --- */
+.template-elegant {
+    font-family: 'Playfair Display', serif;
+    padding: 4rem !important;
+}
+
+.template-elegant .cv-header-ats {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.template-elegant .cv-header-ats h1 {
+    font-size: 32pt;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+.template-elegant .cv-header-ats h3 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 10pt;
+    color: #b08d57;
+    font-family: 'Outfit', sans-serif;
+}
+
+.template-elegant .cv-contact-ats {
+    font-family: 'Outfit', sans-serif;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.template-elegant .section-title-ats {
+    font-size: 14pt;
+    text-align: center;
+    color: #b08d57;
+    margin: 2rem 0 1.5rem;
+    position: relative;
+    font-weight: 400;
+}
+
+.template-elegant .section-title-ats::before,
+.template-elegant .section-title-ats::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: #e5e5e5;
+}
+
+.template-elegant .section-title-ats::before { left: 0; }
+.template-elegant .section-title-ats::after { right: 0; }
+
+.template-elegant .cv-item-header-ats {
+    margin-bottom: 0.5rem;
+}
+
+.template-elegant .cv-item-title-ats strong {
+    font-size: 12pt;
+}
+
+.template-elegant .cv-item-date-ats {
+    font-family: 'Outfit', sans-serif;
+    font-style: italic;
+    color: #888;
+}
+
+/* --- Theme: Technician --- */
+.template-technician {
+    font-family: 'Space Mono', monospace;
+    font-size: 9.5pt;
+    padding: 3rem !important;
+    color: #003300;
+}
+
+.template-technician .cv-header-ats {
+    background: #f0f0f0;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    margin-bottom: 2rem;
+}
+
+.template-technician .cv-header-ats h1 {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.template-technician .cv-contact-ats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.template-technician .cv-contact-ats .separator {
+    display: none;
+}
+
+.template-technician .section-title-ats {
+    font-size: 11pt;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.template-technician .cv-item-ats {
+    border-left: 2px solid #ccc;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.template-technician .cv-item-header-ats {
+    flex-direction: column;
+}
+
+.template-technician .cv-item-date-ats {
+    color: #666;
+    font-size: 9pt;
+    margin-top: 2px;
+}
+
+.template-technician .cv-skills-ats {
+    background: #fafafa;
+    padding: 0.5rem;
+    border: 1px dashed #ddd;
+}
+
+/* --- Theme: Creative Pro (ATS Friendly) --- */
+.template-creative {
+    font-family: 'Montserrat', sans-serif;
+    padding: 3.5rem !important;
+    color: #1a1c20;
+}
+
+.template-creative .cv-header-ats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    border-top: 8px solid #6366f1; /* Indigo Designer Accent */
+    padding-top: 2rem;
+}
+
+.template-creative .cv-header-ats h1 {
+    font-size: 32pt;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+}
+
+.template-creative .cv-header-ats h3 {
+    font-weight: 300;
+    font-size: 16pt;
+    letter-spacing: 4px;
+    color: #4f46e5;
+    margin-bottom: 1.5rem;
+}
+
+.template-creative .cv-contact-ats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 9pt;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.template-creative .section-title-ats {
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1e1b4b;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.template-creative .section-title-ats::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: #6366f1;
+}
+
+.template-creative .cv-item-ats {
+    margin-bottom: 2rem;
+}
+
+.template-creative .cv-item-title-ats strong {
+    font-size: 12pt;
+    color: #1e1b4b;
+}
+
+.template-creative .cv-item-date-ats {
+    font-size: 9pt;
+    font-weight: 600;
+    color: #6366f1;
+}
+
+.template-creative .cv-skills-ats {
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+/* --- Theme: Executive --- */
+.template-executive {
+    font-family: 'Outfit', sans-serif;
+    padding: 3.5rem !important;
+    background: #fff;
+}
+
+.template-executive .cv-header-ats {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    border: 2px solid #000;
+    padding: 2rem;
+}
+
+.template-executive .cv-header-ats h1 {
+    font-size: 30pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+.template-executive .cv-header-ats h3 {
+    font-size: 12pt;
+    font-weight: 400;
+    color: #444;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.template-executive .cv-contact-ats {
+    margin-top: 1rem;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    justify-content: center;
+}
+
+.template-executive .section-title-ats {
+    font-size: 12pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+    text-align: center;
+    margin: 2.5rem 0 1rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 4px;
+}
+
+.template-executive .cv-item-title-ats strong {
+    font-size: 13pt;
+}
+
+.template-executive .cv-item-date-ats {
+    font-weight: 600;
+    background: #000;
+    color: #fff;
+    padding: 2px 8px;
+}
+
+.template-executive .cv-skills-ats {
+    text-align: center;
+    font-style: italic;
+}
+
 
 /* =========================================
    8. Responsive Design & Print Media

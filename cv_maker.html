@@ -10,7 +10,7 @@
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&family=Space+Mono&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -102,6 +102,41 @@
                                 <div class="template-card">
                                     <i class="fas fa-minus"></i>
                                     <h4>Minimal</h4>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="professional">
+                                <div class="template-card">
+                                    <i class="fas fa-user-tie"></i>
+                                    <h4>Professional</h4>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="elegant">
+                                <div class="template-card">
+                                    <i class="fas fa-gem"></i>
+                                    <h4>Elegant</h4>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="technician">
+                                <div class="template-card">
+                                    <i class="fas fa-microchip"></i>
+                                    <h4>Technician</h4>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="creative">
+                                <div class="template-card">
+                                    <i class="fas fa-palette"></i>
+                                    <h4>Creative Pro</h4>
+                                </div>
+                            </label>
+                            <label class="template-option">
+                                <input type="radio" name="template" value="executive">
+                                <div class="template-card">
+                                    <i class="fas fa-crown"></i>
+                                    <h4>Executive</h4>
                                 </div>
                             </label>
                         </div>
@@ -199,15 +234,26 @@
                         </button>
 
                         <div class="form-header" style="margin-top: 2rem;">
-                            <h2>Fresher Details (Internships/Roles)</h2>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h2>Fresher Details (Internships/Roles)</h2>
+                                <label class="switch-container">
+                                    <span class="switch-label">Visible</span>
+                                    <div class="switch-wrapper">
+                                        <input type="checkbox" id="toggle-fresher">
+                                        <span class="switch-slider"></span>
+                                    </div>
+                                </label>
+                            </div>
                             <p>For freshers without formal work experience.</p>
                         </div>
-                        <div id="fresher-list">
-                            <!-- Items dynamically added here -->
+                        <div id="fresher-form-section" style="display: none;">
+                            <div id="fresher-list">
+                                <!-- Items dynamically added here -->
+                            </div>
+                            <button type="button" class="btn btn-secondary" id="add-fresher">
+                                <i class="fas fa-plus"></i> Add Fresher Role
+                            </button>
                         </div>
-                        <button type="button" class="btn btn-secondary" id="add-fresher">
-                            <i class="fas fa-plus"></i> Add Fresher Role
-                        </button>
                     </form>
 
                     <!-- 4. Education Tab -->
@@ -242,17 +288,90 @@
                     <!-- 5. Skills Tab -->
                     <form id="skills-form" class="tab-content">
                         <div class="form-header">
-                            <h2>Skills</h2>
+                            <h2>Skills & Keywords</h2>
+                            <p>ATS algorithms look for industry-specific keywords.</p>
                         </div>
+
+                        <div class="form-group" style="margin-bottom: 2rem;">
+                            <label>Industry-Specific Keywords (Click to add)</label>
+                            <div class="keyword-categories">
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="font-size: 0.8rem; opacity: 0.8;">Technology & Development</label>
+                                    <div class="quick-tags">
+                                        <span class="tag-badge" onclick="addSkill('Agile Methodology')">Agile</span>
+                                        <span class="tag-badge" onclick="addSkill('Cloud Computing')">Cloud</span>
+                                        <span class="tag-badge" onclick="addSkill('REST API')">REST API</span>
+                                        <span class="tag-badge" onclick="addSkill('Data Analysis')">Data Analysis</span>
+                                        <span class="tag-badge" onclick="addSkill('Cybersecurity')">Security</span>
+                                        <span class="tag-badge" onclick="addSkill('Machine Learning')">AI/ML</span>
+                                        <span class="tag-badge" onclick="addSkill('CI/CD Pipelines')">CI/CD</span>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="font-size: 0.8rem; opacity: 0.8;">Management & Leadership</label>
+                                    <div class="quick-tags">
+                                        <span class="tag-badge" onclick="addSkill('Project Management')">Project Mgmt</span>
+                                        <span class="tag-badge" onclick="addSkill('Stakeholder Management')">Stakeholders</span>
+                                        <span class="tag-badge" onclick="addSkill('Strategic Planning')">Strategy</span>
+                                        <span class="tag-badge" onclick="addSkill('Process Improvement')">Optimization</span>
+                                        <span class="tag-badge" onclick="addSkill('Budgeting & Forecasting')">Budgeting</span>
+                                        <span class="tag-badge" onclick="addSkill('Cross-functional Team')">Teamwork</span>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="font-size: 0.8rem; opacity: 0.8;">Marketing & Creative</label>
+                                    <div class="quick-tags">
+                                        <span class="tag-badge" onclick="addSkill('Search Engine Optimization')">SEO</span>
+                                        <span class="tag-badge" onclick="addSkill('Content Strategy')">Content</span>
+                                        <span class="tag-badge" onclick="addSkill('Brand Management')">Branding</span>
+                                        <span class="tag-badge" onclick="addSkill('User Experience (UX)')">UX Design</span>
+                                        <span class="tag-badge" onclick="addSkill('Social Media Marketing')">SMM</span>
+                                        <span class="tag-badge" onclick="addSkill('Market Research')">Research</span>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="font-size: 0.8rem; opacity: 0.8;">Healthcare & Life Sciences</label>
+                                    <div class="quick-tags">
+                                        <span class="tag-badge" onclick="addSkill('Patient Care')">Patient Care</span>
+                                        <span class="tag-badge" onclick="addSkill('Clinical Research')">Clinical Research</span>
+                                        <span class="tag-badge" onclick="addSkill('Regulatory Compliance')">Compliance</span>
+                                        <span class="tag-badge" onclick="addSkill('HIPAA Regulations')">HIPAA</span>
+                                        <span class="tag-badge" onclick="addSkill('Electronic Health Records')">EHR</span>
+                                        <span class="tag-badge" onclick="addSkill('Medical Terminology')">Medical Terms</span>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label style="font-size: 0.8rem; opacity: 0.8;">Action Verbs (Power Words)</label>
+                                    <div class="quick-tags">
+                                        <span class="tag-badge" onclick="addSkill('Spearheaded')">Spearheaded</span>
+                                        <span class="tag-badge" onclick="addSkill('Orchestrated')">Orchestrated</span>
+                                        <span class="tag-badge" onclick="addSkill('Maximized')">Maximized</span>
+                                        <span class="tag-badge" onclick="addSkill('Implemented')">Implemented</span>
+                                        <span class="tag-badge" onclick="addSkill('Deciphered')">Deciphered</span>
+                                        <span class="tag-badge" onclick="addSkill('Cultivated')">Cultivated</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="input-group">
                             <label>Core Skills (comma-separated)</label>
-                            <textarea id="skillsInput" rows="4"></textarea>
+                            <textarea id="skillsInput" rows="4" placeholder="e.g. JavaScript, Project Management, Agile"></textarea>
                         </div>
                     </form>
                     <!-- 6. Projects Tab -->
                     <form id="projects-form" class="tab-content">
                         <div class="form-header">
-                            <h2>Projects</h2>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h2>Projects</h2>
+                                <label class="switch-container">
+                                    <span class="switch-label">Visible</span>
+                                    <div class="switch-wrapper">
+                                        <input type="checkbox" id="toggle-projects" checked>
+                                        <span class="switch-slider"></span>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                         <div id="projects-list">
                             <div class="projects-item">
@@ -318,13 +437,13 @@
                     
                     <!-- Preview Header -->
                     <header class="cv-header-ats">
-                        <h1 id="preview-name">shubh </h1>
+                        <h1 id="preview-name">Shubh </h1>
                         <h3 id="preview-title" style="display: none;">Developer</h3>
                         
                         <div class="cv-contact-ats">
                             <span id="preview-email">example@gmail.com</span>
                             <span class="separator">•</span>
-                            <span id="preview-phone">+91 #########</span>
+                            <span id="preview-phone">+91 9999999999</span>
                             <span class="separator">•</span>
                             <span id="preview-address">New delhi, India</span>
                             <span class="separator" id="linkedin-separator" style="display:none;">•</span>
@@ -348,20 +467,19 @@
                                 <div class="cv-item-ats">
                                     <div class="cv-item-header-ats">
                                         <div class="cv-item-title-ats">
-                                            <strong>Software Engineer</strong>, <em>Google</em>
+                                            <strong>ABC</strong>, <em>XYZ</em>
                                         </div>
                                         <div class="cv-item-date-ats">Jan 2020 - Present</div>
                                     </div>
                                     <ul class="cv-item-desc-ats">
-                                        <li>Developed robust and scalable frontend architectures.</li>
-                                        <li>Led a team of 4 developers.</li>
+                                        <li>add responsibilities</li>
                                     </ul>
                                 </div>
                             </div>
                         </section>
 
                         <!-- Fresher Experience Section -->
-                        <section class="cv-section-ats" id="fresher-section" style="display: none;">
+                        <section class="cv-section-ats section-hidden" id="fresher-section">
                             <h2 class="section-title-ats">INTERNSHIPS &amp; FRESHER EXPERIENCE</h2>
                             <div id="preview-fresher-list">
                                 <!-- Fresher items will display here -->
@@ -375,7 +493,7 @@
                                 <div class="cv-item-ats">
                                     <div class="cv-item-header-ats">
                                         <div class="cv-item-title-ats">
-                                            <strong>BS in CS</strong>, <em>IIT</em>
+                                            <strong>Name of collage/School</strong>, <em>Degree</em>
                                         </div>
                                         <div class="cv-item-date-ats">2020</div>
                                     </div>
@@ -390,7 +508,7 @@
                         </section>
 
                         <!-- Projects Section -->
-                        <section class="cv-section-ats">
+                        <section class="cv-section-ats" id="preview-projects-section">
                             <h2 class="section-title-ats">PROJECTS</h2>
                             <div id="preview-projects-list">
                                 <div class="cv-item-ats">
